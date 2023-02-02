@@ -1,0 +1,106 @@
+body {
+    background-color: #65647C;
+}
+
+.container {
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5rem auto;
+     padding: 1.5rem;
+     border: 0.2rem solid #EAEAEA;
+    width: 25rem;
+}
+
+.form {
+    border: 0.2rem solid #EAEAEA;
+}
+
+input:focus, textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.task i {
+    font-size: 0.8rem;
+}
+
+.task input {
+    padding: 0.45rem;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    width: 18rem;
+}
+
+.task input:hover {
+    background-color: #EAEAEA;
+}
+
+.task a, .update-btn, .edit-btn {
+    line-height: 0;
+    margin-left: 0.5rem;
+    padding: 0.8rem;
+    border: none;
+    background-color: #EAEAEA;
+    color: #707070;
+    cursor: pointer;
+}
+
+.task a:hover, .update-btn:hover, .edit-btn:hover {
+    background-color: #03C988;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.task .trash-btn:hover {
+    background-color: #c92103;
+}
+
+
+.task-input {
+    padding: 0.25rem 0.7rem;
+    border: 0.2rem solid #EAEAEA;
+    width: 19.5rem;
+}
+
+.add-btn {
+    color: #03C988;
+    font-weight: 900;
+}
+
+.task-input:focus,
+textarea:focus,
+.add-btn {
+    border: 0.2rem solid #03C988;
+}
+
+.task-area {
+    height: 35vh;
+    overflow-y: auto;
+}
+
+.task-area::-webkit-scrollbar {
+    display: none;
+}
+
+.text-muted {
+    max-width: 50rem;
+    overflow-wrap: break-word;
+}
+
+textarea {
+    resize: none;
+}
