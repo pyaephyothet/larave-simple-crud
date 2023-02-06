@@ -18,11 +18,15 @@
                 </div>
             </div>
         @endif
-        <form action="{{ route('create') }}" method="post" class="form p-5 border border-gray-800">
+        <form action="{{ route('create') }}" method="post" enctype="multipart/form-data"
+            class="form p-5 border border-gray-800">
             @csrf
             <h1>todo</h1>
             <div class="mt-3 d-flex align-items-center justify-content-between">
-                <input type="text" name="postTask" class="task-input" required>
+                <div class="d-flex flex-column gap-3">
+                    <input type="text" name="postTask" class="task-input" required>
+                    <input type="file" name="postImage" class="img-input" required>
+                </div>
                 <button class="add-btn fs-5 ms-3" type="submit">
                     <i class="bi bi-plus-lg"></i>
                 </button>

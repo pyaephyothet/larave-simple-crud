@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -27,8 +28,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        //dd($request->all());
         $data = $this->getData($request);
+        if ($request->hasFile('postImage')) {
+            $filename = uniqid() . $request->file('postImage')->getClientOriginalName();
+            $request->file('postImage')->storeAs('public', $filename);
+            $data['image'] = $filename;
+        }
         Post::create($data);
         return back()->with(['success' => 'Post Created!']);
 
@@ -75,6 +81,12 @@ class PostController extends Controller
     {
         $updateData = $this->updateData($request);
         $id = $request->updateID;
+        if ($request->hasFile('postImage')) {
+            $filename = uniqid() . $request->file('postImage')->getClientOriginalName();
+            $request->file('postImage')->storeAs('public', $filename);
+            $updateData['image'] = $filename;
+        }
+
         Post::where('id', $id)->update($updateData);
         return redirect()->route('home')->with(['updatSuccess' => 'Post Updated!']);
 

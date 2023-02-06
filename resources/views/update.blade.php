@@ -6,6 +6,7 @@
             <a href="{{ route('home') }}" class="text-decoration-none text-black">
                 <i class="bi bi-arrow-left-circle">back</i>
             </a>
+            <img src="{{ asset('storage/' . $detail['image']) }}" alt="" class="img-thumbnail mt-3">
             <p class="text-muted mt-4">
                 {{ $detail['task'] }}
             </p>

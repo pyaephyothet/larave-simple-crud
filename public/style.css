@@ -11,8 +11,8 @@ body {
     flex-direction: column;
     justify-content: center;
     margin: 5rem auto;
-     padding: 1.5rem;
-     border: 0.2rem solid #EAEAEA;
+    padding: 1.5rem;
+    border: 0.2rem solid #EAEAEA;
     width: 25rem;
 }
 
@@ -20,7 +20,8 @@ body {
     border: 0.2rem solid #EAEAEA;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     border: none;
     outline: none;
 }
@@ -49,7 +50,9 @@ input:focus, textarea:focus {
     background-color: #EAEAEA;
 }
 
-.task a, .update-btn, .edit-btn {
+.task a,
+.update-btn,
+.edit-btn {
     line-height: 0;
     margin-left: 0.5rem;
     padding: 0.8rem;
@@ -59,7 +62,9 @@ input:focus, textarea:focus {
     cursor: pointer;
 }
 
-.task a:hover, .update-btn:hover, .edit-btn:hover {
+.task a:hover,
+.update-btn:hover,
+.edit-btn:hover {
     background-color: #03C988;
     color: #fff;
     border-radius: 0.5rem;
@@ -103,4 +108,9 @@ textarea:focus,
 
 textarea {
     resize: none;
+}
+
+input[type=file] {
+    padding: 4px;
+    background: #fff;
 }
