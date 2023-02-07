@@ -3,7 +3,7 @@
 @section('content')
     <div class="wrapper">
         <div class="my-3">
-            <a href="{{ route('update', $edit['id']) }}" class="text-decoration-none text-black">
+            <a href="{{ route('show', $edit['id']) }}" class="text-decoration-none text-black">
                 <i class="bi bi-arrow-left-circle">back</i>
             </a>
             <form action="{{ route('updatePost') }}" method="post" enctype="multipart/form-data">

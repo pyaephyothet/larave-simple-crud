@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -16,7 +17,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        $table = Post::orderBy('created_at', 'desc')->get()->toArray();
+
+        $table = Post::orderBy('created_at', 'desc')->get();
         return view('create', compact('table'));
     }
 
@@ -28,7 +30,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        $validationRules = [
+            'postTask' => 'required',
+            'postImage' => 'required',
+        ];
+        Validator::make($request->all(), $validationRules)->validate();
+
         $data = $this->getData($request);
         if ($request->hasFile('postImage')) {
             $filename = uniqid() . $request->file('postImage')->getClientOriginalName();
@@ -48,7 +55,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $show = Post::where('id', $id)->first();
+        return view('update', compact('show'));
     }
 
     /**
@@ -59,7 +67,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $edit = Post::where('id', $id)->first()->toArray();
+        $edit = Post::where('id', $id)->first();
         return view('edit', compact('edit'));
 
     }
@@ -71,11 +79,6 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
-    {
-        $detail = Post::where('id', $id)->first()->toArray();
-        return view('update', compact('detail'));
-    }
 
     public function updatePost(Request $request)
     {

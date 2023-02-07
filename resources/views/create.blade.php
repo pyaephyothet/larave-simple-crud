@@ -24,8 +24,18 @@
             <h1>todo</h1>
             <div class="mt-3 d-flex align-items-center justify-content-between">
                 <div class="d-flex flex-column gap-3">
-                    <input type="text" name="postTask" class="task-input" required>
-                    <input type="file" name="postImage" class="img-input" required>
+                    <div class="d-flex flex-column gap-1">
+                        <input type="text" name="postTask" class="task-input" value="{{ old('postTask') }}">
+                        @error('postTask')
+                            <small class="text-danger">Task field is required</small>
+                        @enderror
+                    </div>
+                    <div class="d-flex flex-column gap-1">
+                        <input type="file" name="postImage" class="img-input" value="{{ old('postImage') }}">
+                        @error('postImage')
+                            <small class="text-danger">Image is required</small>
+                        @enderror
+                    </div>
                 </div>
                 <button class="add-btn fs-5 ms-3" type="submit">
                     <i class="bi bi-plus-lg"></i>
@@ -36,7 +46,7 @@
                     @foreach ($table as $item)
                         <div class="task active"><input class="todo-item" type="text"
                                 value="{{ Str::words($item['task'], 6, '...') }}" readonly="readonly"><a
-                                href="{{ route('update', $item['id']) }}" class="complete-btn"><i
+                                href="{{ route('show', $item['id']) }}" class="complete-btn"><i
                                     class="bi bi-file-earmark-break"></i></a><a href="{{ route('delete', $item['id']) }}"
                                 class="trash-btn"><i class="bi bi-trash3"></i></a>
                         </div>
